@@ -26,8 +26,8 @@ export class EmailGenerationContainerComponent {
   }
 
   async generateTempEmailSession() {
-    const session = await this.tempEmailService.generateTempEmailSession();
-    this.session = session;
+    await this.tempEmailService.generateTempEmailSession();
+    this.session = this.tempEmailService.session;
     this.session.introduceSession.expiresAt = new Date(
       this.session.introduceSession.expiresAt
     );

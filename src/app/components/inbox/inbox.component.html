@@ -1,0 +1,7 @@
+<p>inbox works!</p>
+<app-mail-card *ngFor="let mail of mails"
+  [mailTitle]="mail.headerSubject"
+  [mailFrom]="mail.fromAddr"
+  [mailInitialText]="mail.text.slice(0, 20)+'...'"
+/>
+<button (click)="fecthMails()">Atualizar mails</button>
