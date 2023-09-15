@@ -1,0 +1,13 @@
+.email-box {
+  @apply w-2/5 h-10 p-2; 
+  @apply border border-solid border-indigo-400 rounded-lg;
+  @apply text-lg leading-5 font-medium text-indigo-950
+}
+
+.centered-flex {
+  @apply flex items-center justify-center w-full;
+}
+
+.centered-flex-col {
+  @apply flex flex-col items-center justify-center
+}
