@@ -29,17 +29,17 @@ export class EmailGenerationContainerComponent {
     const session = await this.tempEmailService.generateTempEmailSession();
     this.session = session;
     this.session.introduceSession.expiresAt = new Date(
-      new Date().getTime() + 1000 * 30
+      this.session.introduceSession.expiresAt
     );
 
-    this.initTimer(session);
+    this.initTimer();
   }
 
   copyEmail(): void {
     this.clipboard.copy(this.session.introduceSession.addresses[0].address);
   }
 
-  private initTimer(session: IntroduceSessionResponse) {
+  private initTimer() {
     clearInterval(this.autorefreshTimer);
 
     const expiresAt = this.session.introduceSession.expiresAt;
@@ -59,8 +59,6 @@ export class EmailGenerationContainerComponent {
         this.generateTempEmailSession();
         return;
       }
-      
-      console.log(this.autorefreshIn);
     }, 1000);
   }
 }
