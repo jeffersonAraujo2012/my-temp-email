@@ -8,32 +8,49 @@ import { FetchMailsResponse, Mail } from '../types/fetch-mails-response';
   providedIn: 'root',
 })
 export class TempEmailService {
-  id: number = Math.random();
   session!: IntroduceSessionResponse;
   mails!: Mail[];
 
-  constructor() {
-    console.log(this.id);
-  }
+  constructor() {}
 
-  async generateTempEmailSession() {
-    const endpoint = environment.tempEmailApiUri;
+  async generateTempEmailSession(initial?: boolean) {
+    const localSessionString: string | null =
+      localStorage.getItem('temp-mail-session');
 
-    const query = gql`
-      mutation {
-        introduceSession {
-          id
-          expiresAt
-          addresses {
-            address
+    const localSession: IntroduceSessionResponse | null = localSessionString
+      ? JSON.parse(localSessionString)
+      : null;
+
+    if (initial && localSession) {
+      if (
+        new Date(localSession.introduceSession.expiresAt).getTime() <=
+        new Date().getTime()
+      ) {
+        await this.generateTempEmailSession();
+        return;
+      }
+      this.session = localSession;
+    } else {
+      const endpoint = environment.tempEmailApiUri;
+
+      const query = gql`
+        mutation {
+          introduceSession {
+            id
+            expiresAt
+            addresses {
+              address
+            }
           }
         }
-      }
-    `;
+      `;
 
-    const data = await request<IntroduceSessionResponse>(endpoint, query);
-    this.session = data;
-    this.fetchTheIncomingMail();
+      const data = await request<IntroduceSessionResponse>(endpoint, query);
+      localStorage.setItem('temp-mail-session', JSON.stringify(data));
+      this.session = data;
+    }
+
+    await this.fetchTheIncomingMail();
   }
 
   async fetchTheIncomingMail() {
@@ -54,7 +71,7 @@ export class TempEmailService {
       }
     `;
 
-    const {session} = await request<FetchMailsResponse>(endpoint, query);
+    const { session } = await request<FetchMailsResponse>(endpoint, query);
     this.mails = session.mails;
   }
 }

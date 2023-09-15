@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { request, gql } from 'graphql-request';
 import { TempEmailService } from '../../services/temp-email.service';
 import { IntroduceSessionResponse } from 'src/app/types/introduce-session-response';
-import { environment } from 'environments/environments';
 import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
@@ -22,11 +20,11 @@ export class EmailGenerationContainerComponent {
   ) {}
 
   ngOnInit() {
-    this.generateTempEmailSession();
+    this.generateTempEmailSession(true);
   }
 
-  async generateTempEmailSession() {
-    await this.tempEmailService.generateTempEmailSession();
+  async generateTempEmailSession(initial?: boolean) {
+    await this.tempEmailService.generateTempEmailSession(initial);
     this.session = this.tempEmailService.session;
     this.session.introduceSession.expiresAt = new Date(
       this.session.introduceSession.expiresAt
@@ -54,7 +52,6 @@ export class EmailGenerationContainerComponent {
       );
 
       if (this.autorefreshIn <= 0) {
-        console.log("refresh");
         clearInterval(this.autorefreshTimer);
         this.generateTempEmailSession();
         return;
