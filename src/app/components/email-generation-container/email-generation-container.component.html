@@ -2,12 +2,23 @@
   <p class="!m-0">Your temporary email address</p>
 
   <div class="centered-flex mb-5">
-    <div class="email-box">acnlasjdkjasodijasdl@sdfsdf.net</div>
-    <button>Copy</button>
+    <div class="email-box">
+      {{
+        session ? session.introduceSession.addresses[0].address : "Loading..."
+      }}
+    </div>
+    <button (click)="copyEmail()">Copy</button>
   </div>
 
   <div class="centered-flex">
-    <p class="!m-0 mr-4">Autorefresh in</p>
-    <button>Refresh</button>
+    <p class="flex items-center justify-center !m-0 mr-4">
+      Autorefresh in 
+      <mat-spinner
+        diameter="30"
+        mode="determinate"
+        [value]="(autorefreshIn / totalTime) * 100"
+      ></mat-spinner>
+    </p>
+    <button (click)="generateTempEmailSession()">Refresh</button>
   </div>
 </div>
