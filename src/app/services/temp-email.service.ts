@@ -11,6 +11,7 @@ export class TempEmailService {
   session!: IntroduceSessionResponse;
   mails!: Mail[];
   selectedMail: Mail | null = null;
+  notificationPermission: boolean = false;
 
   constructor() {}
 
@@ -73,6 +74,21 @@ export class TempEmailService {
     `;
 
     const { session } = await request<FetchMailsResponse>(endpoint, query);
+
+    const currentQuantityMails = this.mails?.length;
+    if (
+      session.mails?.length > currentQuantityMails &&
+      this.notificationPermission
+    ) {
+      for (let i = 0; i < session.mails.length - currentQuantityMails; i++) {
+        new Notification('New email!', {
+          body: `
+            ${session.mails[currentQuantityMails + i].headerSubject}\n
+            ${session.mails[currentQuantityMails + i].fromAddr}\n
+            ${session.mails[currentQuantityMails + i].text.slice(0, 30)}`,
+        });
+      }
+    }
     this.mails = session.mails;
   }
 
