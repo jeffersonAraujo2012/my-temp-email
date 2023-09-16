@@ -83,9 +83,9 @@ export class TempEmailService {
       for (let i = 0; i < session.mails.length - currentQuantityMails; i++) {
         new Notification('New email!', {
           body: `
-            ${session.mails[currentQuantityMails + i].headerSubject}\n
-            ${session.mails[currentQuantityMails + i].fromAddr}\n
-            ${session.mails[currentQuantityMails + i].text.slice(0, 30)}`,
+            ${session.mails[i].headerSubject}\n
+            ${session.mails[i].fromAddr}\n
+            ${session.mails[i].text.slice(0, 30)}`,
         });
       }
     }
