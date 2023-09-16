@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { TempEmailService } from '../../services/temp-email.service';
-import { IntroduceSessionResponse } from 'src/app/types/introduce-session-response';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { TimerService } from 'src/app/services/timer/timer.service';
 
@@ -10,7 +9,6 @@ import { TimerService } from 'src/app/services/timer/timer.service';
   styleUrls: ['./email-generation-container.component.scss'],
 })
 export class EmailGenerationContainerComponent {
-  session!: IntroduceSessionResponse;
   autorefreshTimer!: any;
   autorefreshIn: { value: number } = {value: 0};
   totalTime: number = 1;
@@ -25,9 +23,12 @@ export class EmailGenerationContainerComponent {
     this.generateTempEmailSession(true);
   }
 
+  get session() {
+    return this.tempEmailService.session;
+  }
+
   async generateTempEmailSession(initial?: boolean) {
     await this.tempEmailService.generateTempEmailSession(initial);
-    this.session = this.tempEmailService.session;
     this.session.introduceSession.expiresAt = new Date(
       this.session.introduceSession.expiresAt
     );
