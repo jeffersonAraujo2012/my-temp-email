@@ -9,7 +9,6 @@ import { Mail } from 'src/app/types/fetch-mails-response';
   styleUrls: ['./inbox.component.scss'],
 })
 export class InboxComponent {
-  mails!: Mail[];
   constructor(private tempMailService: TempEmailService) {}
 
   ngOnInit() {
@@ -19,9 +18,11 @@ export class InboxComponent {
     }, 15000);
   }
 
+  get mails(): Mail[] {
+    return this.tempMailService.mails;
+  }
+
   async fecthMails() {
     await this.tempMailService.fetchTheIncomingMail();
-    this.mails = this.tempMailService.mails;
-    console.log(this.mails);
   }
 }
