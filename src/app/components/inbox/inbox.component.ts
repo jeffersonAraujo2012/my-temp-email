@@ -14,6 +14,7 @@ export class InboxComponent {
 
   ngOnInit() {
     this.mails = this.tempMailService.mails;
+    this.fecthMails();
     setInterval(() => {
       this.fecthMails();
     }, 15000);

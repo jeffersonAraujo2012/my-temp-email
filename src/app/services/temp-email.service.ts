@@ -10,6 +10,7 @@ import { FetchMailsResponse, Mail } from '../types/fetch-mails-response';
 export class TempEmailService {
   session!: IntroduceSessionResponse;
   mails!: Mail[];
+  selectedMail: Mail | null = null;
 
   constructor() {}
 
@@ -73,5 +74,9 @@ export class TempEmailService {
 
     const { session } = await request<FetchMailsResponse>(endpoint, query);
     this.mails = session.mails;
+  }
+
+  setSelectedMail(mail: Mail | null) {
+    this.selectedMail = mail;
   }
 }
