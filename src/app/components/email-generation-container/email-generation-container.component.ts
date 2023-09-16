@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TempEmailService } from '../../services/temp-email.service';
 import { IntroduceSessionResponse } from 'src/app/types/introduce-session-response';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { TimerService } from 'src/app/services/timer/timer.service';
 
 @Component({
   selector: 'app-email-generation-container',
@@ -11,11 +12,12 @@ import { Clipboard } from '@angular/cdk/clipboard';
 export class EmailGenerationContainerComponent {
   session!: IntroduceSessionResponse;
   autorefreshTimer!: any;
-  autorefreshIn: number = 100;
-  totalTime!: number;
+  autorefreshIn: { value: number } = {value: 0};
+  totalTime: number = 1;
 
   constructor(
     private tempEmailService: TempEmailService,
+    private timerService: TimerService,
     private clipboard: Clipboard
   ) {}
 
@@ -30,32 +32,19 @@ export class EmailGenerationContainerComponent {
       this.session.introduceSession.expiresAt
     );
 
-    this.initTimer();
+    [this.autorefreshTimer, this.totalTime] = this.timerService.initTimer({
+      previousTimer: this.autorefreshTimer,
+      expiresAt: this.session.introduceSession.expiresAt,
+      timerValue: this.autorefreshIn,
+      onFinish: () => {
+        this.tempEmailService.selectedMail = null;
+        this.tempEmailService.mails = [];
+        this.generateTempEmailSession();
+      },
+    });
   }
 
   copyEmail(): void {
     this.clipboard.copy(this.session.introduceSession.addresses[0].address);
-  }
-
-  private initTimer() {
-    clearInterval(this.autorefreshTimer);
-
-    const expiresAt = this.session.introduceSession.expiresAt;
-
-    this.totalTime = Math.floor(
-      (expiresAt.getTime() - new Date().getTime()) / 1000
-    );
-
-    this.autorefreshTimer = setInterval(() => {
-      this.autorefreshIn = Math.floor(
-        (expiresAt.getTime() - new Date().getTime()) / 1000
-      );
-
-      if (this.autorefreshIn <= 0) {
-        clearInterval(this.autorefreshTimer);
-        this.generateTempEmailSession();
-        return;
-      }
-    }, 1000);
   }
 }

@@ -16,7 +16,7 @@
       <mat-spinner
         diameter="30"
         mode="determinate"
-        [value]="(autorefreshIn / totalTime) * 100"
+        [value]="(autorefreshIn.value / totalTime) * 100"
       ></mat-spinner>
     </p>
     <button (click)="generateTempEmailSession()">Refresh</button>

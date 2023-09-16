@@ -13,15 +13,14 @@ export class InboxComponent {
   constructor(private tempMailService: TempEmailService) {}
 
   ngOnInit() {
-    this.mails = this.tempMailService.mails;
     this.fecthMails();
     setInterval(() => {
       this.fecthMails();
     }, 15000);
   }
 
-  fecthMails() {
-    this.tempMailService.fetchTheIncomingMail();
+  async fecthMails() {
+    await this.tempMailService.fetchTheIncomingMail();
     this.mails = this.tempMailService.mails;
     console.log(this.mails);
   }
