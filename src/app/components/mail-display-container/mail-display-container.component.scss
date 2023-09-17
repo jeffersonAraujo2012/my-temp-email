@@ -1,0 +1,18 @@
+.mail-display {
+  @apply h-full;
+  @apply border border-solid border-gray-300 rounded-2xl;
+  @apply overflow-hidden;
+  @apply shadow-lg;
+
+  header {
+    h2 {
+      @apply p-2 px-4 m-0 h-12;
+      @apply text-white;
+      @apply bg-gray-800;
+    }
+  }
+
+  pre {
+    @apply py-2 px-4;
+  }
+}
