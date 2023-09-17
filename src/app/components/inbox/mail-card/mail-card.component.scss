@@ -1,7 +1,21 @@
-div {
-  border-bottom: 1px solid grey;
-}
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
 
-p {
-  margin: 0 !important;
+$mat-indigo-500: map-get($mat-indigo, 500);
+
+div.mail-card {
+  @apply px-2;
+
+  h3, p {
+    margin: 0 !important;
+  }
+  
+  h3 {
+   @apply font-medium leading-4;
+  }
+
+  .mail-from {
+    @apply font-bold;
+    color: $mat-indigo-500;
+  }
 }

@@ -1,0 +1,15 @@
+.inbox {
+  @apply h-full mr-4;
+  @apply border border-solid border-gray-300 rounded-2xl;
+  @apply overflow-hidden;
+
+  h2 {
+    @apply p-2 m-0;
+    @apply text-white;
+    @apply bg-gray-800;
+  }
+
+  .inbox-content {
+    @apply py-2;
+  }
+}

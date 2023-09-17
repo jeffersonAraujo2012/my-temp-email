@@ -1,8 +1,17 @@
-<p>inbox works!</p>
-<app-mail-card *ngFor="let mail of mails"
-  [mailTitle]="mail.headerSubject"
-  [mailFrom]="mail.fromAddr"
-  [mailInitialText]="mail.text.slice(0, 20)+'...'"
-  [mail]="mail"
-/>
-<button (click)="fecthMails()">Atualizar mails</button>
+<div class="inbox">
+  <h2>Inbox</h2>
+  <div class="inbox-content">
+    <ng-container *ngFor="let mail of mails">
+      <app-mail-card
+        class="mat-primary"
+        [mailTitle]="mail.headerSubject"
+        [mailFrom]="mail.fromAddr"
+        [mailInitialText]="mail.text.slice(0, 20) + '...'"
+        [mail]="mail"
+      />
+      <div
+        class="h-0 w-full my-2 border-b border-solid border-gray-300 [&:last-child]:border-none"
+      ></div>
+    </ng-container>
+  </div>
+</div>

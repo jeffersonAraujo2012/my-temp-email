@@ -13,6 +13,7 @@ import { NotificationButtonComponent } from './components/notification-button/no
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     MatIconModule,
     MatListModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
