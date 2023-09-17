@@ -1,13 +1,53 @@
-.email-box {
-  @apply w-2/5 h-10 p-2; 
-  @apply border border-solid border-indigo-400 rounded-lg;
-  @apply text-lg leading-5 font-medium text-indigo-950
-}
-
 .centered-flex {
   @apply flex items-center justify-center w-full;
 }
 
 .centered-flex-col {
-  @apply flex flex-col items-center justify-center
+  @apply flex flex-col items-center justify-center;
+  @apply w-full p-8;
+  @apply bg-gray-800;
+
+  & > .heading {
+    @apply text-xl text-white font-bold
+  }
+}
+
+.email-box {
+  @apply relative;
+  @apply flex justify-between items-center;
+  @apply w-2/5 h-14 px-5 py-1 pr-1; 
+  @apply rounded-full;
+  @apply text-white text-xl leading-5;
+  @apply bg-gray-500 bg-opacity-20;
+
+  & > p {
+    @apply m-0;
+  }
+
+  & > button {
+    @apply h-12 w-12;
+  }
+}
+
+.refresh-box {
+  @apply flex items-center justify-center; 
+  @apply mt-4;
+
+  & > p {
+    @apply m-0;
+    @apply text-base leading-4 text-white;
+  }
+
+  & > .timer-wrapper {
+    @apply relative;
+  
+    span {
+      @apply absolute top-0 bottom-0 left-0 right-0;
+      @apply text-white;
+    }
+  }
+
+  button {
+    @apply w-11 h-11 ml-2 mr-1;
+  }
 }
