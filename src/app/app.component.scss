@@ -1,0 +1,28 @@
+@import '@angular/material/theming';
+
+$mat-indigo-500: map-get($mat-indigo, 500);
+
+header {
+  @apply flex items-center;
+  @apply w-full pt-4;
+  @apply bg-gray-800;
+
+  .title-wrapper {
+    @apply flex justify-center items-center;
+    @apply w-1/3;
+
+    h1 {
+      @apply w-fit m-0 py-2 px-4 rounded-xl;
+      @apply text-center font-bold text-gray-50;
+      @apply bg-gray-400 bg-opacity-20;
+      
+      span {
+        color: map-get($mat-indigo, 500);
+      }
+    }
+  }
+
+  app-notification-button {
+    @apply float-left;
+  }
+}
