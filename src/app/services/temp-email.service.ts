@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'environments/environments';
+import { environment } from 'src/environments/environment';
 import request, { gql } from 'graphql-request';
 import { IntroduceSessionResponse } from '../types/introduce-session-response';
 import { FetchMailsResponse, Mail } from '../types/fetch-mails-response';
