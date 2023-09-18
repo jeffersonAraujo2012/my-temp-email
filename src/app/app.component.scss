@@ -3,8 +3,8 @@
 $mat-indigo-500: map-get($mat-indigo, 500);
 
 header {
-  @apply flex items-center;
-  @apply w-full pt-4;
+  @apply flex flex-row-reverse items-center;
+  @apply w-full pt-4 px-4;
   @apply bg-gray-800;
 
   .title-wrapper {
