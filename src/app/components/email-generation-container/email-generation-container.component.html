@@ -1,33 +1,35 @@
-<div class="centered-flex-col">
-  <p class="heading">Your temporary email address</p>
+<div class="email-generation-container centered-flex">
+  <div class="wrapper centered-flex-col">
+    <p class="heading">Your temporary email address</p>
 
-  <div class="email-box centered-flex">
-    <p>
-      {{
-        session ? session.introduceSession.addresses[0].address : "Loading..."
-      }}
-    </p>
+    <div class="email-box centered-flex">
+      <p>
+        {{
+          session ? session.introduceSession.addresses[0].address : "Loading..."
+        }}
+      </p>
 
-    <button mat-fab color="primary" (click)="copyEmail()">
-      <mat-icon>file_copy</mat-icon>
-    </button>
-  </div>
-
-  <div class="centered-flex refresh-box">
-    <p>Autorefresh in&nbsp;</p>
-
-    <div class="timer-wrapper">
-      <mat-spinner
-        diameter="44"
-        mode="determinate"
-        [value]="(autorefreshIn.value / totalTime) * 100"
-      />
-      <span class="centered-flex">{{ autorefreshIn.value }}</span>
+      <button mat-fab color="primary" (click)="copyEmail()">
+        <mat-icon>file_copy</mat-icon>
+      </button>
     </div>
 
-    <button mat-fab color="primary" (click)="generateTempEmailSession()">
-      <mat-icon>refresh</mat-icon>
-    </button>
-    <p>Refresh</p>
+    <div class="centered-flex refresh-box">
+      <p>Autorefresh in&nbsp;</p>
+
+      <div class="timer-wrapper">
+        <mat-spinner
+          diameter="44"
+          mode="determinate"
+          [value]="(autorefreshIn.value / totalTime) * 100"
+        />
+        <span class="centered-flex">{{ autorefreshIn.value }}</span>
+      </div>
+
+      <button mat-fab color="primary" (click)="generateTempEmailSession()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <p>Refresh</p>
+    </div>
   </div>
 </div>

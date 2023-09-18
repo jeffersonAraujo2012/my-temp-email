@@ -4,18 +4,26 @@
 
 .centered-flex-col {
   @apply flex flex-col items-center justify-center;
+}
+
+.email-generation-container {
   @apply w-full p-8;
   @apply bg-gray-800;
 
-  & > .heading {
+  .heading {
     @apply text-xl text-white font-bold
   }
+}
+
+.wrapper {
+  @apply w-fit p-4;
+  @apply border-2 border-dashed border-gray-100 border-opacity-20 rounded-xl;
 }
 
 .email-box {
   @apply relative;
   @apply flex justify-between items-center;
-  @apply w-2/5 h-14 px-5 py-1 pr-1; 
+  @apply w-[40vw] h-14 px-5 py-1 pr-1; 
   @apply rounded-full;
   @apply text-white text-xl leading-5;
   @apply bg-gray-500 bg-opacity-20;
