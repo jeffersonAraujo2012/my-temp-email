@@ -18,7 +18,7 @@ http://ec2-15-229-28-145.sa-east-1.compute.amazonaws.com/
 - **[Docker](https://www.docker.com/)**
 - **[TailwindCSS](https://tailwindcss.com/)**
 - **[Material Angular](https://material.angular.io/)**
-- **[Qraphql-request](https://www.npmjs.com/package/graphql-request)**
+- **[Graphql-request](https://www.npmjs.com/package/graphql-request)**
 - **[Cors-anywhere](https://github.com/Rob--W/cors-anywhere)**
 - **[AWS EC2](https://aws.amazon.com/pt/ec2/)**
 
