@@ -51,6 +51,8 @@ Inicie a aplicação
 
 ## Interface da aplicação
 
+![my-temp-email](https://github.com/jeffersonAraujo2012/my-temp-email/assets/59322029/3b087af7-96c0-49eb-9132-1d506f2171ac)
+
 Quando o sistema ficar online em seu ambiente local, você poderá acessa-lo em seu navegador de preferência em **localhost:4200**.
 
 ### Área de geração de email
