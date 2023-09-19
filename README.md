@@ -1,27 +1,63 @@
-# TempMail
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.2.
+# My Temp Email
 
-## Development server
+>This is a challenge by [Coodesh](https://coodesh.com)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Trata-se de uma aplicação que gera emails temporários e descartáveis que duram apenas 10 minutos.
+## Tecnologias
 
-## Code scaffolding
+- **[NodeJS](https://nodejs.org/pt-br)**
+- **[Angular](https://angular.io/)**
+- **[NGINX](https://docs.nginx.com/)**
+- **[Docker](https://www.docker.com/)**
+- **[TailwindCSS](https://tailwindcss.com/)**
+- **[Material Angular](https://material.angular.io/)**
+- **[Qraphql-request](https://www.npmjs.com/package/graphql-request)**
+- **[Cors-anywhere](https://github.com/Rob--W/cors-anywhere)**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Iniciando localmente
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Clone o projeto
 
-## Running unit tests
+```bash
+  git clone https://github.com/jeffersonAraujo2012/my-temp-email.git
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Va para a pasta raiz do projeto
 
-## Running end-to-end tests
+```bash
+  cd my-temp-email
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Instale as dependências
 
-## Further help
+```bash
+  npm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Inicie a aplicação
+
+```bash
+  npm start
+```
+
+## Interface da aplicação
+
+Quando o sistema ficar online em seu ambiente local, você poderá acessa-lo em seu navegador de preferência em **localhost:4200**.
+
+### Área de geração de email
+Na parte superior verá a área onde o seu endereço de email é gerado. Um é gerado automaticamente assim que você entra no sistema. Você fechar e sair do navegador que esse endereço não será perdido a menos que seu tempo de validade acabe ou você clique no botão **refresh**.
+
+**ATENÇÃO:** O botão **refresh NÃO**  serve para atualizar sua caixa de entrada. Ele serve para gerar um novo endereço de email. Ao clicar nele um novo endereço será gerado e todos os emails do endereço anterior irão desaparecer de sua tela.
+
+### Caixa de entrada
+Na parte esquerda da aplicação está sua caixa de entrada. Ela atualiza automaticamente. Os card apresentam:
+
+- Título do email.
+- Endereço de origem.
+- Texto inicial do email.
+
+### Área do email
+Ao clicar em um email da caixa de entrada ele será exibido na sua área a direita, que inicialmente está em branco.
+
