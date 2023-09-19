@@ -4,6 +4,12 @@
 >This is a challenge by [Coodesh](https://coodesh.com)
 
 Trata-se de uma aplicação que gera emails temporários e descartáveis que duram apenas 10 minutos.
+
+## Deploy de demonstração
+O deploy de demonstração foi feito na AWS EC2 utilizando o NGINX como servidor e containers docker para o sistema. Foi necessário subir um container com o Cors Anywhere devido a problemas de CORS ao acessar a API de geração dos emails. (Não possuo acesso ao código dessa API de terceiro)
+
+http://ec2-15-229-28-145.sa-east-1.compute.amazonaws.com/
+
 ## Tecnologias
 
 - **[NodeJS](https://nodejs.org/pt-br)**
@@ -14,6 +20,7 @@ Trata-se de uma aplicação que gera emails temporários e descartáveis que dur
 - **[Material Angular](https://material.angular.io/)**
 - **[Qraphql-request](https://www.npmjs.com/package/graphql-request)**
 - **[Cors-anywhere](https://github.com/Rob--W/cors-anywhere)**
+- **[AWS EC2](https://aws.amazon.com/pt/ec2/)**
 
 
 ## Iniciando localmente
